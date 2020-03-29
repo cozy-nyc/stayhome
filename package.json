@@ -1,17 +1,17 @@
 {
-  "name": "react-boilerplate",
-  "version": "4.0.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "StayHome",
+  "version": "1.0.0",
+  "description": "Stay Home kids",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/cozy-nyc/stayhome.git"
   },
   "engines": {
     "npm": ">=5",
     "node": ">=8.15.1"
   },
-  "author": "Max Stoiber",
-  "license": "MIT",
+  "author": "cozy.nyc",
+  "license": "GPL",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
@@ -74,7 +74,7 @@
     "cors": "^2.8.5",
     "cross-env": "5.2.0",
     "csvtojson": "^2.0.10",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "fontfaceobserver": "2.1.0",
     "history": "4.9.0",
     "hoist-non-react-statics": "3.3.0",
