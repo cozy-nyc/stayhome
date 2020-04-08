@@ -16,10 +16,7 @@ async function getCSVData() {
 }
 
 async function parseCSVData(data) {
-  const parsedData = await csv({
-    noheader: true,
-    output: 'csv',
-  }).fromString(data);
+  const parsedData = await csv().fromString(data);
   return parsedData;
 }
 
@@ -27,8 +24,8 @@ const getNYC = async (keys, redis) => {
   const response = await getCSVData();
   const parsedCases = await parseCSVData(response.data);
 
-  const removeFirstObj = parsedCases.splice(1);
-  const string = JSON.stringify(removeFirstObj);
+  // const removeFirstObj = parsedCases.splice(1);
+  const string = JSON.stringify(parsedCases);
   redis.set(keys.nyc, string);
 };
 
