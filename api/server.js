@@ -19,20 +19,23 @@ const { keys } = config;
 const execAll = () => {
   scraper.getAll(keys, redis);
   scraper.getStates(keys, redis);
+  scraper.getNYC(keys, redis);
 };
 execAll();
 setInterval(execAll, config.interval);
-
-app.get('/', async (request, response) => {
-  response.redirect('');
-});
 
 const listener = app.listen(config.port, () => {
   console.log(`Your app is listening on port ${listener.address().port}`);
 });
 
 // API endpoints
-app.get('/all/', async (req, res) => {
+app.get('/', async (req, res) => {
+  const nyc = JSON.parse(await redis.get(keys.nyc));
+  console.log(nyc);
+  res.send(nyc);
+});
+
+app.get('/global/', async (req, res) => {
   const all = JSON.parse(await redis.get(keys.all));
   res.send(all);
 });
