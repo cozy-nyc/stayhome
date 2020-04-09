@@ -20,6 +20,7 @@ const execAll = () => {
   scraper.getAll(keys, redis);
   scraper.getStates(keys, redis);
   scraper.getNYC(keys, redis);
+  scraper.nycHistorical(keys, redis);
 };
 execAll();
 setInterval(execAll, config.interval);
@@ -29,10 +30,14 @@ const listener = app.listen(config.port, () => {
 });
 
 // API endpoints
-app.get('/', async (req, res) => {
+app.get('/summary/', async (req, res) => {
   const nyc = JSON.parse(await redis.get(keys.nyc));
-  console.log(nyc);
   res.send(nyc);
+});
+
+app.get('/nyc-historical/', async (req, res) => {
+  const nycHistorical = JSON.parse(await redis.get(keys.nyc_historical));
+  res.send(nycHistorical);
 });
 
 app.get('/global/', async (req, res) => {
@@ -40,7 +45,7 @@ app.get('/global/', async (req, res) => {
   res.send(all);
 });
 
-app.get('/states/', async (req, res) => {
+app.get('/us/', async (req, res) => {
   const states = JSON.parse(await redis.get(keys.states));
   res.send(states);
 });
