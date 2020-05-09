@@ -1,14 +1,15 @@
 const getAll = require('./funcs/getAll');
-const getWorldometers = require('./funcs/getWorldometers');
 const getStates = require('./funcs/getStates');
+const getNYC = require('./funcs/getNYC');
+const nycHistorical = require('./funcs/nycHistorical');
 const jhuLocations = require('./funcs/jhuLocations');
 const historical = require('./funcs/historical');
 
-
 module.exports = {
-	getAll,
-	getWorldometers,
-	getStates,
-	jhuLocations,
-	historical
+  getAll,
+  getNYC,
+  nycHistorical,
+  getStates,
+  jhuLocations,
+  historical,
 };
